@@ -18,7 +18,7 @@ var quotes = [
     Don't walk behind me… I may not lead
     Walk beside me… just be my friend.`,
     `If you tell the truth, you don't have to remember anything.`
-]
+];
 
 var writers = [
     `Oscar Wilde`,
@@ -35,5 +35,28 @@ var writers = [
     `J.K. Rowling`,
     `Albert Camus`,
     `Mark Twain`
-]
+];
 
+var quoteElementClasses = ['fs-2', 'text-break', 'mt-4'];
+var writerElementClasses = ['lead', 'fst-italic', 'fs-5'];
+
+var quoteBlock = document.getElementById('quote-block');
+
+var randomQuoteIdx = -1;
+
+function generateQuote() {
+    var quoteStyle = `class="${quoteElementClasses.join(' ')}"`;
+    var writerStyle = `class="${writerElementClasses.join(' ')}"`;
+
+    var newQuoteIdx = -1;
+    do {
+        newQuoteIdx = Math.floor(Math.random() * quotes.length);
+    } while(randomQuoteIdx == newQuoteIdx)
+
+    randomQuoteIdx = newQuoteIdx;
+
+
+    quoteBlock.innerHTML = 
+    `<p ${quoteStyle}> ${quotes[newQuoteIdx]} </p>
+    <p ${writerStyle}> ${writers[newQuoteIdx]} </p>`;
+}
